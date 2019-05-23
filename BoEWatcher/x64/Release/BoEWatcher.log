@@ -1,0 +1,15 @@
+﻿Build started 2019-05-23 7:24:36 PM.
+     1>Project "C:\Users\pello\OneDrive\Documents\Visual Studio 2013\Projects\BoEWatcher\BoEWatcher\BoEWatcher.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(364,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Launcher.cpp Manager.cpp
+         Launcher.cpp
+         Manager.cpp
+     1>Manager.cpp(26): error C2440: 'type cast' : cannot convert from 'overloaded-function' to 'LPTHREAD_START_ROUTINE'
+                 None of the functions with this name in scope match the target type
+     1>Manager.cpp(26): error C2660: 'CreateThread' : function does not take 5 arguments
+     1>Done Building Project "C:\Users\pello\OneDrive\Documents\Visual Studio 2013\Projects\BoEWatcher\BoEWatcher\BoEWatcher.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.28
