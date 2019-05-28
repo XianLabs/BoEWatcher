@@ -1,7 +1,5 @@
 #pragma once
 #include "Defines.hpp"
-#include <Windows.h>
-#include <string>
 
 class Account
 {

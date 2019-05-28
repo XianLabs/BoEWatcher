@@ -12,7 +12,6 @@ class Launcher
 		std::string BotArguments;
 
 		BOOL IsLaunched;
-
 	
 	public:
 		Launcher();

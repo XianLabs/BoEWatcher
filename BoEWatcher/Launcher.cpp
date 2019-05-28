@@ -9,11 +9,14 @@ Launcher::Launcher()
 
 VOID Launcher::SetBotArguments(std::string Args)
 {
-
+	//cmd line args that arn't part of PoE's
 }
 
 VOID Launcher::SetLaunchArguments(std::string Args)
 {
+	if (Args.size() == 0) //null string
+		return;
+
 	this->LaunchArguments = Args;
 }
 
@@ -45,6 +48,7 @@ BOOL Launcher::LaunchProcess()
 	this->Proc->SetProcessID(piProcInfo.dwProcessId);
 	this->Proc->SetProcessHandle(piProcInfo.hProcess);
 	this->Proc->SetParentProcessID(GetCurrentProcessId());
+	this->Proc->EnableDebugPrivilges();
 
 	HANDLE ProcessThread = piProcInfo.hThread;
 
