@@ -4,6 +4,7 @@
 #include <tlhelp32.h>
 #include <tchar.h>
 
+//Should be a singleton class instance
 class Manager
 {
 private:
@@ -19,8 +20,6 @@ public:
 	HANDLE GetMonitorThread() { return this->MonitorThread; }
 	BOOL SetMonitorThread(HANDLE Thread) { if (Thread != INVALID_HANDLE_VALUE) this->MonitorThread = Thread; }
 	
-	BOOL ListProcessModules(DWORD dwPID);
-	BOOL ListProcessThreads(DWORD dwOwnerPID); //probably above 2 can go into the respective process class.
 	std::list<DWORD>* GetAllProcessIDs();
 	
 	static VOID MonitorProcesses(); //Thread func

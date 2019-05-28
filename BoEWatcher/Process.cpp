@@ -17,13 +17,13 @@ VOID Process::SetProcessID(DWORD ProcID)
 
 VOID Process::SetParentProcessID(DWORD ParentID)
 {
-	if (ParentID != 0 && ParentID != -1)
-	{
-		this->ParentProcessID = ParentID;
-	}
+	if (ParentID > 0 && ParentID < 65535)
+		this->ParentProcessID = ParentID;	
+	else
+		PrintError(TEXT("SetParentProcess"));
 }
 
-VOID Process::SetProcessName(LPSTR ProcName)
+VOID Process::SetProcessName(LPSTR ProcName) //leaving this empty for now, need to do some hackish stuff to change .exe name at runtime
 {
 	if (ProcName == NULL)
 		return;
@@ -31,22 +31,17 @@ VOID Process::SetProcessName(LPSTR ProcName)
 
 VOID Process::SetMainWindowHWND(HWND hwnd)
 {
-
+	if (hwnd != INVALID_HANDLE_VALUE)
+		this->MainHWND = hwnd;
 }
 
-VOID Process::SetWindowTitle(LPSTR Title)
-{
-	
-	//todo: get process main hwnd
-//	if (!SetWindowTextA())
-}
 
 VOID Process::SetInjected(BOOL IsInjected)
 {
 	this->IsBoEInjected = IsInjected;
 }
 
-VOID Process::SetPrivileges()
+VOID Process::SetPrivileges() //todo: Complete this function + form its parameters
 {
 
 }
@@ -54,10 +49,8 @@ VOID Process::SetPrivileges()
 BOOL Process::SetProcessHandle(HANDLE h)
 {
 	if (h == INVALID_HANDLE_VALUE || h == NULL)
-	{
 		return FALSE;
-	}
-
+	
 	this->ProcessHandle = h;
 	return TRUE;
 }
@@ -159,13 +152,13 @@ BOOL Process::ListThreads(DWORD dwOwnerPID)
 
 BOOL Process::ChangeWindowTitle(std::string Title)
 {
-	EnumWindows(Process::EnumWindowsCallback, reinterpret_cast<LPARAM>(this));
+	EnumWindows(Process::EnumWindowsCallback, reinterpret_cast<LPARAM>(this)); //throw this ptr into LPARAM so we can use class method for callback.
 	SetWindowTextA(this->MainHWND, Title.c_str());
 	return TRUE;
 }
 
 
-BOOL CALLBACK Process::EnumWindowsCallback(HWND hwnd, LPARAM lParam) //lparam = thisptr
+BOOL CALLBACK Process::EnumWindowsCallback(HWND hwnd, LPARAM lParam) //lparam = thisptr of Process
 {
 	Process* p = reinterpret_cast<Process*>(lParam);
 

@@ -335,7 +335,8 @@ namespace BoEWatcher {
 		}
 #pragma endregion
 		
-	private: System::Void button_SelectPoEFolder_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void button_SelectPoEFolder_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
 
 		OpenFileDialog^ ProfileDialog = gcnew OpenFileDialog;
 		ProfileDialog->InitialDirectory = "C:\\";
@@ -354,7 +355,8 @@ namespace BoEWatcher {
 		}
 
 	}
-private: System::Void button_AddAccount_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void button_AddAccount_Click(System::Object^  sender, System::EventArgs^  e) 
+{
 
 	if (ProcessPath == NULL)
 	{
