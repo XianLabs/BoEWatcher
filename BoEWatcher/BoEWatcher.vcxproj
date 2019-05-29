@@ -48,7 +48,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Injector.cpp" />
     <ClCompile Include="Launcher.cpp" />
     <ClCompile Include="MainForm.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>
@@ -176,6 +177,7 @@
     </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Multi.cpp" />
     <ClCompile Include="Process.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -189,11 +191,13 @@
     <ClInclude Include="Account.hpp" />
     <ClInclude Include="Defines.hpp" />
     <ClInclude Include="Externs.hpp" />
+    <ClInclude Include="Injector.hpp" />
     <ClInclude Include="Launcher.hpp" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Manager.hpp" />
+    <ClInclude Include="Multi.hpp" />
     <ClInclude Include="Process.hpp" />
   </ItemGroup>
   <ItemGroup>

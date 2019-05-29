@@ -370,8 +370,8 @@ private: System::Void button_AddAccount_Click(System::Object^  sender, System::E
 		return;
 	}
 	
-	this->textBox_ProcessArgs->Text = this->textBox_ProcessArgs->Text + "--account=" + this->textBox_Username->Text + " --pw=" + this->textBox_Password->Text
-		+ " --character=" + this->textBox_Character->Text + " --realm=Washington" + " --bottype=generic";
+	this->textBox_ProcessArgs->Text = this->textBox_ProcessArgs->Text + ";--acct=" + this->textBox_Username->Text + ";--pw=" + this->textBox_Password->Text
+		+ ";--char=" + this->textBox_Character->Text + ";--realm=Washington" + ";--bot=generic";
 
 	char* LaunchArgs = (char*)(void*)Marshal::StringToHGlobalAnsi(this->textBox_ProcessArgs->Text);
 
