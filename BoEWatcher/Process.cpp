@@ -172,3 +172,12 @@ BOOL CALLBACK Process::EnumWindowsCallback(HWND hwnd, LPARAM lParam) //lparam = 
 
 	return TRUE;
 }
+
+VOID Process::KillProcess()
+{
+	if (!TerminateProcess(this->ProcessHandle, 0))
+	{
+		//cmd line with /f pid kill?
+	}
+
+}

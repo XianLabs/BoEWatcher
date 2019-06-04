@@ -124,4 +124,29 @@ VOID Manager::MonitorProcesses()
 
 		delete ProcessList;
 	}
+
+	Watcher->MonitorThread = NULL;
+}
+
+BOOL Manager::RemoveAccount(std::string AccountName)
+{
+	//cleanup memory of account class then delete account, cleanup member of launcher then delete launcher
+	std::list<Launcher*>::const_iterator iterator;
+
+	for (iterator = Watcher->LauncherList->begin(); iterator != this->LauncherList->end(); ++iterator) 
+	{
+		Account* a = iterator._Ptr->_Myval->GetAccount();
+		
+		std::string acct = a->GetAccountName();
+		
+		if (strcmp(acct.c_str(), AccountName.c_str()) == 0) //found our launcher index's account name, clean up the memory
+		{
+			printf("Found account to remove: %s\n", acct.c_str());
+			iterator._Ptr->_Myval->DeleteAccount();
+			iterator._Ptr->_Myval->GetProcess()->KillProcess();
+			Watcher->GetLauncherList()->erase(iterator); //error spot?
+		}
+	}
+
+	return TRUE;
 }

@@ -42,6 +42,8 @@ public:
 	BOOL ListModules(DWORD ProcID);
 	BOOL ListThreads(DWORD dwOwnerPID);
 
+	VOID KillProcess();
+
 	BOOL ChangeWindowTitle(std::string Title);
 	static BOOL CALLBACK EnumWindowsCallback(HWND hWnd, LPARAM lparam);
 };

@@ -16,6 +16,7 @@ public:
 	
 	BOOL StartMonitor();
 	BOOL AddAccount(Launcher* L);
+	BOOL RemoveAccount(std::string AccountName);
 
 	HANDLE GetMonitorThread() { return this->MonitorThread; }
 	BOOL SetMonitorThread(HANDLE Thread) { if (Thread != INVALID_HANDLE_VALUE) this->MonitorThread = Thread; }
@@ -23,4 +24,6 @@ public:
 	std::list<DWORD>* GetAllProcessIDs();
 	
 	static VOID MonitorProcesses(); //Thread func
+
+	std::list<Launcher*> *GetLauncherList() { return this->LauncherList; }
 };

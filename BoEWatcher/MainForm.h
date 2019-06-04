@@ -60,10 +60,13 @@ namespace BoEWatcher {
 	private: System::Windows::Forms::TextBox^  textBox_Character;
 	private: System::Windows::Forms::TextBox^  textBox_Password;
 	private: System::Windows::Forms::TextBox^  textBox_Username;
-	private: System::Windows::Forms::ComboBox^  comboBox_BotType;
+
 	private: System::Windows::Forms::ComboBox^  comboBox_Realm;
 	private: System::Windows::Forms::Button^  button_AddAccount;
 	private: System::Windows::Forms::ColumnHeader^  columnHeader_Realm;
+	private: System::Windows::Forms::TextBox^  textBox_BotType;
+	private: System::Windows::Forms::TabPage^  tabPage2;
+	private: System::Windows::Forms::Label^  label1;
 
 
 
@@ -98,27 +101,30 @@ namespace BoEWatcher {
 			this->columnHeader_Char = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader_Status = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader_Gains = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader_Level = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader_Realm = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader_Area = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnHeader_Level = (gcnew System::Windows::Forms::ColumnHeader());
 			this->contextMenuStrip_Watcher = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->launchToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->removeKillsProcessToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
-			this->button_AddAccount = (gcnew System::Windows::Forms::Button());
-			this->textBox_Username = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_Password = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_Character = (gcnew System::Windows::Forms::TextBox());
-			this->comboBox_Realm = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox_BotType = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox_ProcessArgs = (gcnew System::Windows::Forms::TextBox());
-			this->button_SelectPoEFolder = (gcnew System::Windows::Forms::Button());
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
-			this->columnHeader_Realm = (gcnew System::Windows::Forms::ColumnHeader());
+			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
+			this->textBox_BotType = (gcnew System::Windows::Forms::TextBox());
+			this->button_SelectPoEFolder = (gcnew System::Windows::Forms::Button());
+			this->textBox_ProcessArgs = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_Character = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_Password = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_Username = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox_Realm = (gcnew System::Windows::Forms::ComboBox());
+			this->button_AddAccount = (gcnew System::Windows::Forms::Button());
+			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->contextMenuStrip_Watcher->SuspendLayout();
 			this->groupBox1->SuspendLayout();
-			this->tabPage1->SuspendLayout();
 			this->tabControl1->SuspendLayout();
+			this->tabPage1->SuspendLayout();
+			this->tabPage2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// listView1
@@ -160,16 +166,21 @@ namespace BoEWatcher {
 			this->columnHeader_Gains->Text = L"Orb Gains";
 			this->columnHeader_Gains->Width = 63;
 			// 
-			// columnHeader_Level
+			// columnHeader_Realm
 			// 
-			this->columnHeader_Level->DisplayIndex = 4;
-			this->columnHeader_Level->Text = L"Level";
-			this->columnHeader_Level->Width = 45;
+			this->columnHeader_Realm->DisplayIndex = 6;
+			this->columnHeader_Realm->Text = L"Realm";
 			// 
 			// columnHeader_Area
 			// 
 			this->columnHeader_Area->Text = L"Area";
 			this->columnHeader_Area->Width = 67;
+			// 
+			// columnHeader_Level
+			// 
+			this->columnHeader_Level->DisplayIndex = 4;
+			this->columnHeader_Level->Text = L"Level";
+			this->columnHeader_Level->Width = 45;
 			// 
 			// contextMenuStrip_Watcher
 			// 
@@ -192,6 +203,7 @@ namespace BoEWatcher {
 			this->removeKillsProcessToolStripMenuItem->Name = L"removeKillsProcessToolStripMenuItem";
 			this->removeKillsProcessToolStripMenuItem->Size = System::Drawing::Size(192, 22);
 			this->removeKillsProcessToolStripMenuItem->Text = L"Remove (Kills process)";
+			this->removeKillsProcessToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::removeKillsProcessToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -203,15 +215,25 @@ namespace BoEWatcher {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Controls";
 			// 
+			// tabControl1
+			// 
+			this->tabControl1->Controls->Add(this->tabPage1);
+			this->tabControl1->Controls->Add(this->tabPage2);
+			this->tabControl1->Location = System::Drawing::Point(6, 15);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(215, 242);
+			this->tabControl1->TabIndex = 0;
+			// 
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::Control;
+			this->tabPage1->Controls->Add(this->textBox_BotType);
 			this->tabPage1->Controls->Add(this->button_SelectPoEFolder);
 			this->tabPage1->Controls->Add(this->textBox_ProcessArgs);
 			this->tabPage1->Controls->Add(this->textBox_Character);
 			this->tabPage1->Controls->Add(this->textBox_Password);
 			this->tabPage1->Controls->Add(this->textBox_Username);
-			this->tabPage1->Controls->Add(this->comboBox_BotType);
 			this->tabPage1->Controls->Add(this->comboBox_Realm);
 			this->tabPage1->Controls->Add(this->button_AddAccount);
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
@@ -221,23 +243,39 @@ namespace BoEWatcher {
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Account Mgmt.";
 			// 
-			// button_AddAccount
+			// textBox_BotType
 			// 
-			this->button_AddAccount->Location = System::Drawing::Point(6, 187);
-			this->button_AddAccount->Name = L"button_AddAccount";
-			this->button_AddAccount->Size = System::Drawing::Size(89, 23);
-			this->button_AddAccount->TabIndex = 0;
-			this->button_AddAccount->Text = L"Add + Launch PoE";
-			this->button_AddAccount->UseVisualStyleBackColor = true;
-			this->button_AddAccount->Click += gcnew System::EventHandler(this, &MainForm::button_AddAccount_Click);
+			this->textBox_BotType->Location = System::Drawing::Point(6, 125);
+			this->textBox_BotType->Name = L"textBox_BotType";
+			this->textBox_BotType->Size = System::Drawing::Size(149, 20);
+			this->textBox_BotType->TabIndex = 8;
+			this->textBox_BotType->Text = L"Bot Type";
 			// 
-			// textBox_Username
+			// button_SelectPoEFolder
 			// 
-			this->textBox_Username->Location = System::Drawing::Point(6, 8);
-			this->textBox_Username->Name = L"textBox_Username";
-			this->textBox_Username->Size = System::Drawing::Size(149, 20);
-			this->textBox_Username->TabIndex = 1;
-			this->textBox_Username->Text = L"Username/Email";
+			this->button_SelectPoEFolder->Location = System::Drawing::Point(94, 187);
+			this->button_SelectPoEFolder->Name = L"button_SelectPoEFolder";
+			this->button_SelectPoEFolder->Size = System::Drawing::Size(109, 23);
+			this->button_SelectPoEFolder->TabIndex = 7;
+			this->button_SelectPoEFolder->Text = L"Select PoE Process";
+			this->button_SelectPoEFolder->UseVisualStyleBackColor = true;
+			this->button_SelectPoEFolder->Click += gcnew System::EventHandler(this, &MainForm::button_SelectPoEFolder_Click);
+			// 
+			// textBox_ProcessArgs
+			// 
+			this->textBox_ProcessArgs->Location = System::Drawing::Point(6, 156);
+			this->textBox_ProcessArgs->Name = L"textBox_ProcessArgs";
+			this->textBox_ProcessArgs->Size = System::Drawing::Size(149, 20);
+			this->textBox_ProcessArgs->TabIndex = 6;
+			this->textBox_ProcessArgs->Text = L"\"C:\\Program Files (x86)\\Grinding Gear Games\\PoE\\PathOfExile_x64.exe\" ";
+			// 
+			// textBox_Character
+			// 
+			this->textBox_Character->Location = System::Drawing::Point(6, 95);
+			this->textBox_Character->Name = L"textBox_Character";
+			this->textBox_Character->Size = System::Drawing::Size(149, 20);
+			this->textBox_Character->TabIndex = 3;
+			this->textBox_Character->Text = L"Character Name";
 			// 
 			// textBox_Password
 			// 
@@ -248,13 +286,13 @@ namespace BoEWatcher {
 			this->textBox_Password->TabIndex = 2;
 			this->textBox_Password->Text = L"Password";
 			// 
-			// textBox_Character
+			// textBox_Username
 			// 
-			this->textBox_Character->Location = System::Drawing::Point(6, 95);
-			this->textBox_Character->Name = L"textBox_Character";
-			this->textBox_Character->Size = System::Drawing::Size(149, 20);
-			this->textBox_Character->TabIndex = 3;
-			this->textBox_Character->Text = L"Character Name";
+			this->textBox_Username->Location = System::Drawing::Point(6, 8);
+			this->textBox_Username->Name = L"textBox_Username";
+			this->textBox_Username->Size = System::Drawing::Size(149, 20);
+			this->textBox_Username->TabIndex = 1;
+			this->textBox_Username->Text = L"Username/Email";
 			// 
 			// comboBox_Realm
 			// 
@@ -270,50 +308,34 @@ namespace BoEWatcher {
 			this->comboBox_Realm->TabIndex = 4;
 			this->comboBox_Realm->Text = L"Washington, D.C. (US)";
 			// 
-			// comboBox_BotType
+			// button_AddAccount
 			// 
-			this->comboBox_BotType->FormattingEnabled = true;
-			this->comboBox_BotType->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"Delve", L"Delve (No Encounter)", L"Generic",
-					L"Atlas", L"Niko Farm"
-			});
-			this->comboBox_BotType->Location = System::Drawing::Point(6, 125);
-			this->comboBox_BotType->Name = L"comboBox_BotType";
-			this->comboBox_BotType->Size = System::Drawing::Size(149, 21);
-			this->comboBox_BotType->TabIndex = 5;
-			this->comboBox_BotType->Text = L"Bot Type";
+			this->button_AddAccount->Location = System::Drawing::Point(5, 187);
+			this->button_AddAccount->Name = L"button_AddAccount";
+			this->button_AddAccount->Size = System::Drawing::Size(89, 23);
+			this->button_AddAccount->TabIndex = 0;
+			this->button_AddAccount->Text = L"Add + Launch PoE";
+			this->button_AddAccount->UseVisualStyleBackColor = true;
+			this->button_AddAccount->Click += gcnew System::EventHandler(this, &MainForm::button_AddAccount_Click);
 			// 
-			// textBox_ProcessArgs
+			// tabPage2
 			// 
-			this->textBox_ProcessArgs->Location = System::Drawing::Point(6, 156);
-			this->textBox_ProcessArgs->Name = L"textBox_ProcessArgs";
-			this->textBox_ProcessArgs->Size = System::Drawing::Size(149, 20);
-			this->textBox_ProcessArgs->TabIndex = 6;
-			this->textBox_ProcessArgs->Text = L"\"C:\\Program Files (x86)\\Grinding Gear Games\\PoE\\PathOfExile_x64.exe\" ";
+			this->tabPage2->BackColor = System::Drawing::SystemColors::Control;
+			this->tabPage2->Controls->Add(this->label1);
+			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Name = L"tabPage2";
+			this->tabPage2->Size = System::Drawing::Size(207, 216);
+			this->tabPage2->TabIndex = 1;
+			this->tabPage2->Text = L"Account Profile";
 			// 
-			// button_SelectPoEFolder
+			// label1
 			// 
-			this->button_SelectPoEFolder->Location = System::Drawing::Point(101, 187);
-			this->button_SelectPoEFolder->Name = L"button_SelectPoEFolder";
-			this->button_SelectPoEFolder->Size = System::Drawing::Size(102, 23);
-			this->button_SelectPoEFolder->TabIndex = 7;
-			this->button_SelectPoEFolder->Text = L"Select PoE Folder";
-			this->button_SelectPoEFolder->UseVisualStyleBackColor = true;
-			this->button_SelectPoEFolder->Click += gcnew System::EventHandler(this, &MainForm::button_SelectPoEFolder_Click);
-			// 
-			// tabControl1
-			// 
-			this->tabControl1->Controls->Add(this->tabPage1);
-			this->tabControl1->Location = System::Drawing::Point(6, 15);
-			this->tabControl1->Name = L"tabControl1";
-			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(215, 242);
-			this->tabControl1->TabIndex = 0;
-			// 
-			// columnHeader_Realm
-			// 
-			this->columnHeader_Realm->DisplayIndex = 6;
-			this->columnHeader_Realm->Text = L"Realm";
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(45, 88);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(111, 13);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"*** IN PROGRESS ***";
 			// 
 			// MainForm
 			// 
@@ -327,9 +349,11 @@ namespace BoEWatcher {
 			this->Text = L"BoE Watcher";
 			this->contextMenuStrip_Watcher->ResumeLayout(false);
 			this->groupBox1->ResumeLayout(false);
+			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
-			this->tabControl1->ResumeLayout(false);
+			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -357,7 +381,6 @@ namespace BoEWatcher {
 	}
 private: System::Void button_AddAccount_Click(System::Object^  sender, System::EventArgs^  e) 
 {
-
 	if (ProcessPath == NULL)
 	{
 		MessageBox::Show("Please select PoE Process before adding accounts.");
@@ -370,8 +393,12 @@ private: System::Void button_AddAccount_Click(System::Object^  sender, System::E
 		return;
 	}
 	
-	this->textBox_ProcessArgs->Text = this->textBox_ProcessArgs->Text + ";--acct=" + this->textBox_Username->Text + ";--pw=" + this->textBox_Password->Text
-		+ ";--char=" + this->textBox_Character->Text + ";--realm=Washington" + ";--bot=generic";
+	this->textBox_ProcessArgs->Text = this->textBox_ProcessArgs->Text 
+		+ ";--acct=" + this->textBox_Username->Text 
+		+ ";--pw=" + this->textBox_Password->Text
+		+ ";--char=" + this->textBox_Character->Text 
+		+ ";--realm=" + this->comboBox_Realm->Text 
+		+ ";--bot=" + this->textBox_BotType->Text;
 
 	char* LaunchArgs = (char*)(void*)Marshal::StringToHGlobalAnsi(this->textBox_ProcessArgs->Text);
 
@@ -412,6 +439,33 @@ private: System::Void button_AddAccount_Click(System::Object^  sender, System::E
 		MessageBox::Show("Error: Somehow launching with no accounts properly added.");
 	
 	delete LaunchArgs;
+}
+private: System::Void removeKillsProcessToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	//check if row is selected, grab first subitem for acct name, then traverse launcher list
+	ListViewItem^ selectedItem;
+
+	for (int i = 0; i < listView1->Items->Count; i++) {
+
+		selectedItem = listView1->Items[i];
+
+		if (selectedItem->Selected == true) {
+
+			String^ Account = selectedItem->SubItems[0]->Text;
+
+			std::string strAccount = std::string((char*)(void*)Marshal::StringToHGlobalAnsi(Account));
+			
+			if (!Watcher->RemoveAccount(strAccount))
+			{
+				printf("Could not remove account! WTFOMG!\n");
+				return;
+			}
+			
+			listView1->Items->Remove(listView1->Items[i]);
+		}
+	}
+
+
 }
 };
 }

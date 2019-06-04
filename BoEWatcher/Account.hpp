@@ -16,9 +16,9 @@ private:
 public:
 	Account();
 
-	std::string GetAccountName();
-	std::string GetPassword();
-	std::string GetCharacterName();
+	std::string GetAccountName() { return this->AccountName; }
+	std::string GetPassword() { return this->Password; }
+	std::string GetCharacterName() { return this->CharacterName; }
 
 	BOOL SetAccountName(std::string Name);
 	BOOL SetPassword(std::string Name);

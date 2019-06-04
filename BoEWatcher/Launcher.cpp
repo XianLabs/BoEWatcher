@@ -56,3 +56,9 @@ BOOL Launcher::LaunchProcess()
 	return TRUE;
 }
 
+BOOL Launcher::DeleteAccount()
+{
+
+
+	return TRUE;
+}

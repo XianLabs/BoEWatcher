@@ -27,5 +27,6 @@ class Launcher
 		Account* GetAccount() { return this->Acct; }
 
 		BOOL LaunchProcess();
+		BOOL DeleteAccount();
 };
 
